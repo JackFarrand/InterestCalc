@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; user-scalable=no;"/>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<link rel="shortcut icon" href="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/favicon.ico" />
+<link rel="apple-touch-icon" href="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/Icon.png"/>
+
+<title>Interest Payment Calculator</title>
+  
+  <style type='text/css'>
+     /*Normalise*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td 
+{
+    margin:0;
+    padding:0;    
+}
+
+table 
+{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+fieldset,img 
+{ 
+    border:0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var 
+{
+    font-style:normal;
+    font-weight:normal;
+}
+
+ol,ul 
+{
+    list-style:none;
+}
+
+caption,th {
+
+    text-align:left;
+
+}
+
+h1,h2,h3,h4,h5,h6 {
+
+    font-size:100%;
+
+    font-weight:normal;
+
+}
+
+q:before,q:after {
+
+    content:'';
+
+}
+
+abbr,acronym { border:0;}
+
+
+
+/*End Normalise*/
+body, html
+{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+
+}
+
+#settingsIcon
+{
+    width:24px;
+    height:24px;
+    position:absolute;
+    right: 10px;
+    top:10px;
+}
+
+h1 
+{
+    text-align:center;
+    margin-top: 10px;
+    padding:5px;
+    font-size:180%;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+    color:white;
+}
+p{color:white;}
+
+
+div#container
+{
+    
+   position:absolute;
+    min-width:100%;
+    min-height:100%;
+    background-color:black;
+    
+   /* border-radius:10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.60);*/
+}
+
+div#innerContainer
+{
+    width:100%;
+    margin: auto;
+}
+
+div#textContainer
+{
+    width: 45%;
+    float: left;
+}
+
+div#formContainer
+{
+   margin-left: 45%;
+   margin-right:2%;
+}
+
+input
+{
+    width:110px;
+   height:20px;   
+   display:block;
+   margin:0 10px 10px 10px;   
+}
+
+input.button
+{
+   
+   height:30px; 
+ 
+
+   margin:10px 10px 10px 10px;   
+
+}
+
+select
+{
+    display:block;
+    margin:0 10px 10px 10px;
+    width:111px;    
+}
+
+p.input
+{
+    width:100%;
+    margin:0 10px 14px auto;
+    text-align:right;
+}
+.output
+{
+    display:block;
+    clear:both;
+     
+}
+
+#calcButton
+{
+    text-align:center;
+    width:40%;
+    height:30px;
+    margin: 5px 30% auto 30%;
+    font-weight:bold;   
+ 
+}
+
+#output.output
+{
+    margin-top:10px;
+    text-align:center;
+    font-size:150%;
+}
+
+.divGradient
+{
+    background: rgb(35,83,138); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(35,83,138,1) 0%, rgba(167,207,223,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(35,83,138,1)), color-stop(100%,rgba(167,207,223,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(35,83,138,1) 0%,rgba(167,207,223,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(35,83,138,1) 0%,rgba(167,207,223,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(35,83,138,1) 0%,rgba(167,207,223,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(35,83,138,1) 0%,rgba(167,207,223,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23538a', endColorstr='#a7cfdf',GradientType=0 ); /* IE6-9 */
+
+
+}
+
+.tableGradient
+{
+   background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(241,241,241,1) 27%, rgba(225,225,225,1) 100%, rgba(246,246,246,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(27%,rgba(241,241,241,1)), color-stop(100%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 27%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 27%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 27%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 27%,rgba(225,225,225,1) 100%,rgba(246,246,246,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+
+}
+
+button
+{
+    border:none;
+    border-radius:10px;
+    
+  background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(51%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+
+#tableContainer
+{
+    margin:10px 10px 30px 10px;
+    width:auto;
+    padding:4px;
+    border-radius:5px;
+    clear: both;
+    overflow:hidden; 
+}
+
+#showTableButton
+{
+    display:block;
+    vertical-align:middle;
+    line-height:30px;
+    padding-right:10px;
+    position:absloute;
+    min-width:90%;
+    margin:15px auto;
+}
+
+#buttonText
+{
+    color:black;
+    display:inline;
+}
+
+.up
+{
+    -webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+}
+
+.down
+{
+    -webkit-transform: rotate(0deg);
+-moz-transform: rotate(0deg);
+}
+
+table,th,td
+{
+    border: 1px solid black;
+    padding: 3px 3px 3px 1px;
+    color:black;    
+    text-align:center;
+}
+
+td
+{
+    width:auto;
+}
+
+table
+{
+   width:100%;
+   margin:auto;
+   border: 1px solid black;
+}
+
+#tableHeader
+{
+    font-size:110%;
+    text-align:center;
+    font-weight:bold;
+}
+
+th
+{
+    font-size:80%;
+    font-weight:bold;
+    text-align:center;
+    border: 1px solid black;
+   /* background-color:#CCE4FF;   */
+}
+
+td
+{
+    font-size:80%;
+}
+td:first-child
+{
+    text-align:center;
+}
+
+tr.evenRow
+{
+   background: rgb(222,222,222); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(222,222,222,1) 0%, rgba(163,163,163,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(222,222,222,1)), color-stop(100%,rgba(163,163,163,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(222,222,222,1) 0%,rgba(163,163,163,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(222,222,222,1) 0%,rgba(163,163,163,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(222,222,222,1) 0%,rgba(163,163,163,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(222,222,222,1) 0%,rgba(163,163,163,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedede', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
+
+}
+tr.oddRow, .header
+{
+   background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+}
+
+.shown
+{
+   display:auto;
+    height:auto;
+}
+.hidden
+{  
+    display:none;
+}
+
+#copyright
+{
+    position:fixed;
+    font-size:80%;
+    width:100%;
+    text-align:center;
+    bottom:0px;
+    padding:2px;
+    /*border-top: 1px solid white;*/
+    
+    background: rgb(69,72,77); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(69,72,77,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+
+}
+
+  </style>
+  
+
+
+<script type='text/javascript'>
+
+//Mobile Javascript Interest Payment Calculator
+var loan;
+var term;
+var rate;
+var type;
+var output;
+var calculatedPayment;
+
+function alertClick(sender) {
+
+    //for debug use only
+    alert("Suitable for use with Chrome, Safari, Firefox & IE9+");
+
+}
+
+function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
+function getMonthlyPayment(apr, loanSize, term, isInterestOnly) {
+    var payment;
+    var monthly_interest = apr / 1200;
+
+    if (!isInterestOnly) {
+        payment = loanSize * ((monthly_interest * Math.pow((monthly_interest + 1.0), term)) / (Math.pow((monthly_interest + 1.0), term) - 1));
+
+    }
+    else {
+        payment = loanSize * monthly_interest;
+    }
+
+    return payment;
+}
+//loansize is number of whole currency, APR is the annual percentage rate, term is term in months, is interest only should be a boolean indicating if the loan is to be repaid or if the payments made should just be to cover the interest.
+
+
+function updatePaymentSchedule() {
+    //******************************************************//
+    var table = document.getElementById('scheduleTable');
+
+
+    if (table.hasChildNodes()) {
+        while (table.childNodes.length > 2 && table.lastChild !== 0) {
+            table.removeChild(table.lastChild);
+            //removes every value that isn't the top two rows, i.e. the headers.
+        }
+    }
+
+    for (var i = 0; i <= (term.value); i++) {
+        var rowElement = document.createElement("tr");
+        if (i % 2 === 0) rowElement.className = "evenRow";
+        else rowElement.className = "oddRow";
+
+        table.appendChild(rowElement);
+
+        var cellElement1 = document.createElement("td");
+        var cellElement2 = document.createElement("td");
+        var cellElement3 = document.createElement("td");
+        var cellElement4 = document.createElement("td");
+
+        
+        var monthlyInterest = rate.value / 1200;
+
+        //B_n = A(1+i)^n − (P/i)[(1+i)^n − 1]
+        var currentBalance = (loan.value * Math.pow(1 + monthlyInterest, i)) - ((calculatedPayment / monthlyInterest) * (Math.pow((1 + monthlyInterest), i) - 1));
+
+        cellElement1.innerHTML = "" + (i); //month number
+        cellElement2.innerHTML = addCommas("£" + (currentBalance * monthlyInterest).toFixed(2));
+        cellElement3.innerHTML = addCommas("£" + currentBalance.toFixed(2));
+        cellElement4.innerHTML = addCommas("£" + (calculatedPayment * i).toFixed(2));
+
+
+
+        rowElement.appendChild(cellElement1);
+        rowElement.appendChild(cellElement2);
+        rowElement.appendChild(cellElement3);
+        rowElement.appendChild(cellElement4);
+
+    }
+}
+
+
+
+function calculate() {
+
+    calculatedPayment = getMonthlyPayment(rate.value, loan.value, term.value, (type.value === "Interest-Only")).toFixed(2);
+
+    output.innerHTML = addCommas("Monthly Payment:  <br /> £" + calculatedPayment);
+
+    updatePaymentSchedule();
+
+    localStorage.loan = loan.value;
+    localStorage.term = term.value;
+    localStorage.rate = rate.value;
+    localStorage.type = type.value;
+}
+
+
+
+window.onload = function() {
+    loan = document.getElementById("loanAmnt");
+    term = document.getElementById("term");
+    rate = document.getElementById("rate");
+    type = document.getElementById("type");
+
+    loan.value = localStorage.loan || 100000;
+    term.value = localStorage.term || 120;
+    rate.value = localStorage.rate || 3.99;
+    type.value = localStorage.type || "Repayment";
+
+    output = document.getElementById("output");
+
+    /* alert("loan: "+ loan.value + " Term: " + term.value + " Rate: " + rate.value + " type: " + type.value);*/
+
+    calculate();
+
+};
+
+function showHideTable() {
+    var table = document.getElementById("scheduleTable");
+    var tableContainer = document.getElementById("tableContainer");
+    var text = document.getElementById("buttonText");
+    var img1 = document.getElementById("tableButtonImg1");
+    var img2 = document.getElementById("tableButtonImg2");
+
+    if (table.className === "hidden") {
+        table.className = "shown";
+        tableContainer.className = "tableGradient";
+        text.innerHTML = 'Hide Payment Schedule';
+        img1.className = "up";
+        img2.className = "up";
+    }
+    else {
+        table.className = "hidden";
+        tableContainer.className = "hidden";
+        text.innerHTML = 'Show Payment Schedule';
+        img1.className = "down";
+        img2.className = "down";
+    }
+
+
+
+}
+
+
+</script>
+
+
+</head>
+<body>
+          
+        <div id="container" class="divGradient">
+            <img id = "settingsIcon" src="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/settings-icon.png" width="24px" height="24px" onclick="alertClick(this);">
+            
+            <h1>Loan Calculator</h1><br>
+           <div id="innerContainer">
+            <div id="textContainer" >
+             <p class="input">Loan Amount</p>
+             <p class="input">Term (Months)</p>
+             <p class="input">APR</p>
+             <p class="input">Repayment Type</p>
+            </div>
+
+            <div id="formContainer">
+                <form>
+                    <input name="loan" id="loanAmnt" type="number" onchange="calculate();">
+                    <input name="term" id="term" type="number" onchange="calculate();">
+                    <input name="rate" id="rate" type="number" max="40.00" min="1.00" step="0.01" onchange="calculate();">
+                    <select name="repayment-type" id="type" onchange="calculate();">
+                        
+                        <option value="Repayment" >     Repayment     </option>
+                        <option value="Interest-Only" > Interest-Only </option>    
+                        
+                    </select>
+                  
+               </form>        
+            </div>
+               
+            <button id="calcButton" onClick="calculate();">Calculate</button>
+            <p class="output" id="output">Monthly Payment: </p>
+        
+        </div>
+            
+            <button id="showTableButton" onclick="showHideTable();"><img id="tableButtonImg1" src="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/rightArrow.png"> <p id="buttonText">Show Payment Schedule</p> <img id="tableButtonImg2" src="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/rightArrow.png">                 
+                </button>
+             
+            <div id="tableContainer" class="hidden" >
+                
+                 
+           <table id="scheduleTable" class="hidden" >
+              
+               <tr>
+                   <th id="tableHeader" colspan="4" class="header">Payment Schedule</th>
+               </tr>
+               
+                <tr>
+  <th class="header">Month</th> <th class="header">Interest Charged </th> <th class="header">Balance Remaining</th> <th class="header">Total Paid</th> 
+               </tr>
+               
+            </table>     
+                 
+        </div>            
+             <p  id="copyright" class="">&copy; Jack Farrand May 2012</p>
+    </div>
+       
+    </body>
+</html>
+  
+</body>
+
+
+</html>
+
+
