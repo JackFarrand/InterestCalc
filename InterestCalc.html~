@@ -9,14 +9,13 @@
 
 <link rel="shortcut icon" href="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/favicon.ico" />
 <link rel="apple-touch-icon" href="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/Icon.png"/>
-<link rel="stylesheet" type="text/css" href="styles.css">
-
 
 <title>Interest Payment Calculator</title>
   
   <style type='text/css'>
    
   </style>
+  
 
 
 <script src="interest.js"></script>
