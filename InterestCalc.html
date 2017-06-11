@@ -3,30 +3,25 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; user-scalable=no;"/>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"/>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<link rel="shortcut icon" href="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/favicon.ico" />
-<link rel="apple-touch-icon" href="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/Icon.png"/>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="apple-touch-icon" href="images/Icon.png"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="styles.css">
 
 
 <title>Interest Payment Calculator</title>
-  
-  <style type='text/css'>
-   
-  </style>
-
 
 <script src="interest.js"></script>
-
 
 </head>
 <body>
           
         <div id="container" class="divGradient">
-            <img id = "settingsIcon" src="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/settings-icon.png" width="24px" height="24px" onclick="alertClick(this);">
+            <img id = "settingsIcon" src="images/settings-icon.png" width="24px" height="24px" onclick="alertClick(this);">
             
             <h1>Loan Calculator</h1><br>
            <div id="innerContainer">
@@ -39,10 +34,24 @@
 
             <div id="formContainer">
                 <form>
-                    <input name="loan" id="loanAmnt" type="number" onchange="calculate();">
-                    <input name="term" id="term" type="number" onchange="calculate();">
-                    <input name="rate" id="rate" type="number" max="40.00" min="1.00" step="0.01" onchange="calculate();">
-                    <select name="repayment-type" id="type" onchange="calculate();">
+                	<div class="input-group">
+                		<span class="input-group-addon">£</span>
+                    	<input name="loan" class="form-control" id="loanAmnt" type="number" onchange="calculate();" placeholder="Loan Amount">
+                  </div>
+                  
+                  <div class="input-group">                  
+                  	<input name="term" class="form-control" id="term" type="number" onchange="calculate();">
+                     <span class="input-group-addon">Months</span>
+                  </div>
+                  
+                  <div class="input-group">   
+                    <input name="rate" class="form-control" id="rate" type="number" max="40.00" min="1.00" step="0.01" onchange="calculate();">
+                    <span class="input-group-addon">%</span>
+                  </div>                    
+                    
+                  <div class="input-group">   
+                  	<select name="repayment-type" id="type" onchange="calculate();">
+                    
                         
                         <option value="Repayment" >     Repayment     </option>
                         <option value="Interest-Only" > Interest-Only </option>    
@@ -52,12 +61,12 @@
                </form>        
             </div>
                
-            <button id="calcButton" onClick="calculate();">Calculate</button>
+            <button id="calcButton" class="btn" onClick="calculate();">Calculate</button>
             <p class="output" id="output">Monthly Payment: </p>
         
         </div>
             
-            <button id="showTableButton" onclick="showHideTable();"><img id="tableButtonImg1" src="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/rightArrow.png"> <p id="buttonText">Show Payment Schedule</p> <img id="tableButtonImg2" src="http://dl.dropbox.com/u/21199707/Web/Pages/Interest%20Calculator/rightArrow.png">                 
+            <button id="showTableButton" onclick="showHideTable();"><img id="tableButtonImg1" src="images/rightArrow.png"> <p id="buttonText">Show Payment Schedule</p> <img id="tableButtonImg2" src="images/rightArrow.png">                 
                 </button>
              
             <div id="tableContainer" class="hidden" >
